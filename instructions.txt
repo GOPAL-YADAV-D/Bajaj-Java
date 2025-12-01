@@ -1,0 +1,68 @@
+You are helping me build a Spring Boot application based on these requirements. Generate clean, production-ready Java + Spring Boot code following SOLID principles and proper packaging.
+
+**Goal:**  
+Build a Spring Boot app that automatically runs a workflow when the application starts (no REST controller triggers).  
+
+**Flow:**
+
+1. On app startup, send a POST request:
+
+   URL:
+   https://bfhldevapigw.healthrx.co.in/hiring/generateWebhook/JAVA
+
+   JSON Body:
+   {
+      "name": "Gopal Yadav",
+      "regNo": "22BCT0094",
+      "email": "gopalyadav6560@gmail.com"
+   }
+
+2. Parse the response JSON. It will contain:
+   - `webhookUrl`
+   - `accessToken`
+
+3. Based on the last two digits of the `regNo`:
+   - If odd → Question 1 URL to fetch:
+     https://drive.google.com/file/d/1LAPx2to9zmN5DY0tkMrJRNvJrNVx1gnR/view
+   - If even → Question 2 URL to fetch:
+     https://drive.google.com/file/d/1b0p5C-6fUrUQglJVaWWAAB3P12lfoBCH/view
+
+4. Parse/process logic so that the program forms the final SQL query string. 
+   (For now mock/fake the logic with a placeholder SQL string.)
+
+5. Send a second POST request:
+
+   URL:
+   https://bfhldevapigw.healthrx.co.in/hiring/testWebhook/JAVA
+
+   Headers:
+   Authorization: <accessToken>
+   Content-Type: application/json
+
+   Body:
+   {
+      "finalQuery": "<the_SQL_query>"
+   }
+
+---
+
+**Tech & Implementation Requirements:**
+
+- Use Spring Boot 3+
+- Use `RestTemplate` or `WebClient` (preferred)
+- No controllers for triggering flow — run logic using:
+  - `ApplicationRunner` or `CommandLineRunner`
+- Use proper service, config, and model layering.
+- Log the request/response cleanly.
+- Add error handling + retry strategy for network calls.
+- Write tests using JUnit + Mockito.
+- Generate a working runnable `.jar`.
+
+---
+
+Now generate:
+
+1. Project structure recommendations
+2. Full working code (main app, services, DTOs, config)
+3. A sample test file
+
